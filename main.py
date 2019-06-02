@@ -1,6 +1,6 @@
 import socketio
 import random
-
+import mmlib
 # HOST_PORT = 'http://192.168.1.127:4000'
 # USER_NAME = 'Jose.Memencho'
 # TOURNAMENT_ID = 142857
@@ -43,13 +43,18 @@ def on_ready(data):
     print('Got: ', gameID)
     print('Got: ', playerTurnID)
     print('Got: ', board)
+
     # do a ROLL
-    letter = random.choice(LETTERS)
-    number = random.randint(0, 64)
-    movimiento = number
+    # letter = random.choice(LETTERS)
+    # number = random.randint(0, 64)
+    # movimiento = number
+    
+    # do a roll using IA hell yeah
+    (move_coord, score) = mmlib.minmax2(board, 0, 3, playerTurnID, playerTurnID)
+    # transform the coord into an int
+    movimiento = mmlib.coord_to_index(move_coord)
 
-    print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento))
-
+    print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento, score))
     # print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento))
 
     socket_io.emit('play', {

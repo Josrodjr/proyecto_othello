@@ -3,7 +3,7 @@ import random
 
 HOST_PORT = 'http://localhost:4000'
 USER_NAME = 'Kappa'
-TOURNAMENT_ID = 123
+TOURNAMENT_ID = 12
 # 1A - 8G
 LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 movimiento = ''

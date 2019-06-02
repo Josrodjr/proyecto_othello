@@ -1,9 +1,14 @@
 import socketio
 import random
 
-HOST_PORT = 'http://192.168.1.127:4000'
-USER_NAME = 'Jose.Memencho'
-TOURNAMENT_ID = 142857
+# HOST_PORT = 'http://192.168.1.127:4000'
+# USER_NAME = 'Jose.Memencho'
+# TOURNAMENT_ID = 142857
+
+HOST_PORT = 'http://localhost:4000'
+USER_NAME = 'Jose'
+TOURNAMENT_ID = 12
+
 # 1A - 8G
 LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 movimiento = ''
@@ -35,9 +40,9 @@ def on_ready(data):
     gameID = data['game_id']
     playerTurnID = data['player_turn_id']
     board = data['board']
-#     print('Got: ', gameID)
-#     print('Got: ', playerTurnID)
-#     print('Got: ', board)
+    print('Got: ', gameID)
+    print('Got: ', playerTurnID)
+    print('Got: ', board)
     # do a ROLL
     letter = random.choice(LETTERS)
     number = random.randint(0, 64)

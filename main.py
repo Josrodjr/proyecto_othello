@@ -54,7 +54,11 @@ def on_ready(data):
     # transform the coord into an int
     movimiento = mmlib.coord_to_index(move_coord)
 
-    print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento, score))
+    mmlib.mark(board, move_coord)
+    print(move_coord)
+    print(movimiento)
+    print(board[movimiento])
+    # print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento, score))
     # print("sending: ", (TOURNAMENT_ID, playerTurnID, gameID, movimiento))
 
     socket_io.emit('play', {

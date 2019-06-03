@@ -30,7 +30,7 @@ SENDING = (12, 2, 5287908743203175, 7)
 
 def coord_to_index(position):
     (x, y) = position
-    result = (y * 8) + x
+    result = (x * 8) + y
     return result
 
 
@@ -48,7 +48,7 @@ def explore(board_layout, turn):
     board[board == otherturn] = 0
     # now in case that we got turn 2 turn the 2-s into 1-s
     board[board == 2] = 1
-    print(board)
+    # print(board)
     temp_score = score * board
     num_score = numpy.sum(temp_score) + numpy.sum(board)
     return num_score
@@ -191,10 +191,11 @@ def validspots(board_layout, turn):
 
 def mark(board_layout, moves):
     board_mat = tomatrix(board_layout)
-    for x, y in moves:
-        board_mat[x, y] = 69
     print(board_mat)
-    return 0
+    x, y = moves
+    board_mat[x, y] = 42
+    print(board_mat)
+    return board_mat
 
 
 # yikes = validspots(BOARD, 1)
